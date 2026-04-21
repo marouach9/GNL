@@ -9,7 +9,6 @@ char	*append_and_clear(char *s1, char *s2)
 	if (!s1)
 		return (ft_strdup(s2));
 	new = ft_strjoin(s1, s2);
-	free(s1);
 	return (new);
 }
 
@@ -91,3 +90,24 @@ char	*get_next_line(int fd)
 	content = shrink_buffer(content);
 	return (line);
 }
+/*
+#include <stdio.h>
+
+int	main(void)
+{
+	int		fd;
+	char	*line;
+
+	fd = open("test.txt", O_RDONLY);
+	if (fd < 0)
+		return (1);
+	line = get_next_line(fd);
+	while (line)
+	{
+		printf("%s", line);
+		free(line);
+		line = get_next_line(fd);
+	}
+	close(fd);
+	return (0);
+}*/

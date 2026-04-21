@@ -38,7 +38,10 @@ char	*ft_strjoin(char *s1, char *s2)
 	len = ft_strlen(s1) + ft_strlen(s2);
 	tab = malloc(sizeof(char) * (len + 1));
 	if (!tab)
+	{
+		free(s1);
 		return (NULL);
+	}
 	i = 0;
 	while (s1[i])
 	{
@@ -47,12 +50,9 @@ char	*ft_strjoin(char *s1, char *s2)
 	}
 	j = 0;
 	while (s2[j])
-	{
-		tab[i] = s2[j];
-		i++;
-		j++;
-	}
+		tab[i++] = s2[j++];
 	tab[i] = '\0';
+	free(s1);
 	return (tab);
 }
 
